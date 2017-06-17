@@ -108,7 +108,24 @@ public class Features {
 			}
 		}
 		else if(item.equals("2")){
-			
+			System.out.println("請輸入電影名稱：");
+			String movie = sc.nextLine();
+			System.out.println("請輸入電影分類：");
+			String cate = sc.nextLine();
+			System.out.println("請輸入出版日期：");
+			String debut = sc.nextLine();
+			System.out.println("請輸入下載費用：");
+			String cost = sc.nextLine();
+			System.out.println("請輸入本片導演");
+			String dir = sc.nextLine();
+			System.out.println("請輸入出版商：");
+			String publish = sc.nextLine();
+			smt.executeUpdate(" INSERT INTO movie (movieName,category,debut,cost,dirName,publish) values('" + movie  + "','"+ cate +"','"+debut+"','"+cost+"','"+dir+"','"+publish+ "')");
+			ResultSet rs =smt.executeQuery("SELECT * FROM movie WHERE movieName='"+movie+"'");
+	        while(rs.next()){
+	              String s = "已新增：  電影名稱：" + rs.getString("movieName") + ",  類型：" + rs.getString("category") +",  上映時間："+rs.getString("debut");
+	              System.out.println(s);
+	        }
 		}
 	}
 }
